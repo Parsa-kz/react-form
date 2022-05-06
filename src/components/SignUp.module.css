@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.formContainer{
+    border: 1px solid silver;
+    width: fit-content;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+    height: fit-content;
+    background-color: #fff;
+    text-align: center;
+}
+
+.header{
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    color: #1a73e8;
+}
+
+.formField{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    height: 75px;
+}
+
+.formField label{
+    text-align: left;
+    margin-bottom: 5px;
+    color: rgb(85, 85, 85);
+    font-size: .9rem;
+}
+
+.formField span{
+    height: 10px;
+    text-align: left;
+    margin-top: 5px;
+    width: fit-content;
+    font-size: .7rem;
+    color: red;
+    line-height: 10px;
+    padding: 2px 3px;
+    border-radius: 3px;
+    background-color: rgba(255, 0, 0, 0.175);
+}
+
+.unCompleted{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid red;
+    transition: all .2s ease-in;
+}
+
+.formInput{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid silver;
+    transition: all .2s ease-in;
+}
+
+.formInput:focus,
+.unCompleted:focus{
+    outline: none;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #1a73e8;
+}
