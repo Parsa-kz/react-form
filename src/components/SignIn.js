@@ -6,21 +6,18 @@ import {notify} from "./toast";
 import styles from "./SignUp.module.css";
 import {Link} from 'react-router-dom';
 
-const SignUp = () => {
+const SignIn = () => {
 
     const [data,setData] = useState({
-        name: "",
         email: "",
-        password: "",
-        confirmPassword: "",
-        isAccepted: false
+        password: ""
     });
 
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
 
     useEffect(() => {
-        setErrors(validate(data, "SignUp"));
+        setErrors(validate(data, "SignIn"));
     }, [data, touched])
 
     const changeHandler = event => {
@@ -39,7 +36,7 @@ const SignUp = () => {
     const submitHandler = event => {
         event.preventDefault();
         if (!Object.keys(errors).length){
-            notify("You signed up successfully", "success");
+            notify("You signed in successfully", "success");
         } else {
             notify("Invalid data", "error")
             setTouched({
@@ -55,12 +52,7 @@ const SignUp = () => {
     return (
         <div className={styles.container}>
             <form onSubmit = {submitHandler} className={styles.formContainer}>
-                <h2 className={styles.header}>SignUp</h2>
-                <div className={styles.formField}>
-                    <label>Name</label>
-                    <input className={(errors.name && touched.name) ? styles.unCompleted : styles.formInput} type="text" name="name" value={data.name} onChange={changeHandler} onFocus={focusHandler} />
-                    {errors.name && touched.name && <span>{errors.name}</span>}
-                </div>
+                <h2 className={styles.header}>Sign in</h2>
                 <div className={styles.formField}>
                     <label>Email</label>
                     <input className={(errors.email && touched.email) ? styles.unCompleted : styles.formInput} type="text" name="email" value={data.email} onChange={changeHandler} onFocus={focusHandler} />
@@ -71,21 +63,9 @@ const SignUp = () => {
                     <input className={(errors.password && touched.password) ? styles.unCompleted : styles.formInput} type="password" name="password" value={data.password} onChange={changeHandler} onFocus={focusHandler} />
                     {errors.password && touched.password && <span>{errors.password}</span>}
                 </div>
-                <div className={styles.formField}>
-                    <label>Confirm Password</label>
-                    <input className={(errors.confirmPassword && touched.confirmPassword) ? styles.unCompleted : styles.formInput} type="password" name="confirmPassword" value={data.confirmPassword} onChange={changeHandler} onFocus={focusHandler} />
-                    {errors.confirmPassword && touched.confirmPassword && <span>{errors.confirmPassword}</span>}
-                </div>
-                <div className={styles.formField}>
-                    <div className={styles.checkboxContainer}>
-                        <label>I accept terms of privacy policy</label>
-                        <input  type="checkbox" name="isAccepted" value={data.isAccepted} onChange={changeHandler} onFocus={focusHandler} />
-                        {errors.isAccepted && touched.isAccepted && <span>{errors.isAccepted}</span>}
-                    </div>
-                </div>
                 <div className={styles.formButton}>
-                    <Link to="/signin">Login</Link>
-                    <button type="submit">Sign Up</button>
+                    <Link to="/signup">Sign Up</Link>
+                    <button type="submit">Login</button>
                 </div>
             </form>
             <ToastContainer />
@@ -93,4 +73,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default SignIn;
